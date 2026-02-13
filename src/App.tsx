@@ -1,25 +1,15 @@
-import { useState } from 'react'
+
 import './App.css'
+import { Landing } from './features/landing/Landing'
+import { Header } from './components/layout/Header'
+import { Footer } from './components/layout/Footer'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-      </div>
-      <h1>Panda Market</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Header />
+      <Landing />
+      <Footer />
     </>
   )
 }
