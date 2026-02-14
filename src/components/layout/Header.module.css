@@ -1,8 +1,42 @@
+/* src/components/layout/Header.module.css */
+
 .header {
-    width: 100%;
-    height: 7rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20rem;
+  width: 100%;
+  height: 7rem;
+  background-color: #ffffff;
+  border-bottom: 0.1rem solid #dfdfdf;
+}
+
+.inner {
+  width: 100%;
+  max-width: 120rem;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.loginLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.6rem;
+  font-weight: 600;
+  border-radius: 0.8rem;
+  padding: 1.15rem 2.3rem;
+
+  background-color: #3692ff;
+  color: #ffffff;
+}
+
+.loginLink:hover {
+  background-color: #1967d6;
+}
+
+.loginLink:focus {
+  background-color: #1251aa;
 }

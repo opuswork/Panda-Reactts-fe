@@ -1,111 +1,208 @@
+/* src/features/landing/landing.module.css */
 .banner {
-    background-color: #cfe5ff;
-    height: 540px;
-    display: flex;
-    align-items: center;
-    background-repeat: no-repeat;
-    background-position: 80% bottom;
-    background-size: 55%;
-  }
+  background-color: #cfe5ff;
+  height: 40rem;  /* height of the banner should be the same as the hero inner */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroInner {
+  width: 100%;
+  max-width: 85rem; /* 800px – hero content (text + panda) constrained to 800px */
+  height: 100%;
+  min-height: 40rem;  /* minimum height of the hero inner */
+  margin: 0 auto;
+  display: flex;
+  align-items: center;  
+
+  background-color: #cfe5ff;
+  background-image: url("/images/home/hero-image.png");
+  background-repeat: no-repeat;
+  background-position: 85% 100%;
+  background-size: 75% auto;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.heroTitle {
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 4.4rem;
+  letter-spacing: 0.02em;
+  word-wrap: break-word;
+}
+
+.heroButton {
+  margin-top: 3.2rem;
+  font-size: 1.6rem;
+  padding: 1.2rem 9rem;
+}
+
+.bottomBanner {
+  background-image: url("/images/home/bottom-banner-image.png");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: 33% auto; /* scale image down so it's not too big */
+}
+
+.features {
+  padding-bottom: 13.8rem;
+}
+
+.feature {
+  padding: 13.8rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0%;
+  max-width: 100rem;
+  margin-left: auto;
+  margin-right: auto;
   
-  .hero {
-    background-image: url("../../images/home/hero-image.png");
-  }
-  
-  .features {
-    padding-bottom: 138px;
-  }
-  
-  .bottomBanner {
-    background-image: url("../../images/home/bottom-banner-image.png");
+}
+
+.feature:nth-child(2) {
+  text-align: right;
+}
+
+.feature:nth-child(2) .featureRight {
+  justify-content: flex-end;
+}
+
+/* Tablet (768px): stack image + content, content on next line with alignment */
+@media (max-width: 768px) {
+  .feature {
+    flex-direction: column;
+    align-items: center; /* align image and content block so they share the same left edge */
+    gap: 2rem;
   }
 
-  /* banner 요소 내의 pill-button을 선택해 스타일 적용. ID 선택자 대신 이렇게 캐스캐이딩을 활용하는 방법은 특정 컨텍스트 내에서만 스타일을 적용하고자 할 때 유용해요. */
-.pill-button {
-    margin-top: 32px;
+  .feature img {
+    order: 1;
+    width: 80vw; /* 80% of screen width on tablet */
   }
-  
-  /* flex 요소에서는 gap 속성을 사용해 자식 요소 사이의 간격을 조정할 수 있어요. */
-  .feature {
-    padding: 138px 0;
-    display: flex;
-    align-items: center;
-    gap: 5%;
+
+  .featureRight {
+    order: 2;
+    width: 80vw; /* match image width so content aligns with left side of image */
+    align-self: stretch; /* full width of the 80vw row */
   }
-  
-  /* pseudo-selector인 nth-child(2)를 통해 feature 클래스를 가진 요소 중 두 번째 아이템에만 다른 스타일을 적용했어요. */
-  .feature:nth-child(2) {
+
+  .featureContent {
+    max-width: 80vw;
+  }
+
+  /* Feature 1 (Hot item): content next line, align left */
+  .feature:nth-child(1) .featureRight {
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: 7rem;
+  }
+
+  /* Feature 2 (Search): content next line, align right */
+  .feature:nth-child(2) .featureRight {
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-left: 9rem;
+  }
+
+  .feature:nth-child(2) .featureContent {
     text-align: right;
   }
-  
-  /* flex: 1을 통해 부모 요소인 feature의 남은 공간을 모두 차지하도록 설정할 수 있어요. */
-  .feature-content {
-    flex: 1;
-  }
-  
-  .feature-tag {
-    color: #3692ff;
-    font-size: 18px;
-    line-height: 25px;
-    font-weight: 700;
-    margin-bottom: 12px;
-  }
-  
-  .feature-description {
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 120%;
-    letter-spacing: 0.08em;
-    margin-top: 24px;
-  }
-  
 
-  /* 요소의 최대 너비를 1200rem로 제한하고, 요소가 그보다 큰 경우에는 가로 중앙 정렬해 주는 inner container */
-.wrapper {
-    max-width: 120rem;
-    margin: 0 auto;
-    width: 100%;
+  /* Feature 3 (Register): content next line, align left */
+  .feature:nth-child(3) .featureRight {
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: 7rem;
   }
-  
-  h1 {
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 5.6rem;
-    letter-spacing: 0.02em;
-  }
-  
-  /* 위에서 스타일링해준 <button> 태그와 달리 버튼 모양이지만 <a> 태그를 사용한 class='button' 요소들을 지칭하는 부분이니 혼동하지 않도록 주의하세요. */
-  .button {
-    background-color: #3692ff;
-    color: #ffffff;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* 
-    가상 클래스(pseudo-class)를 사용해 특정 상태에 맞는 스타일을 적용하세요. 
-    버튼 역할을 하는 요소에는 hover 또는 disabled 시의 스타일을 지정해 주는 것이 사용자 경험에 도움이 됩니다. 
-  */
-  .button:hover {
-    background-color: #1967d6;
-  }
-  
-  .button:focus {
-    background-color: #1251aa;
-  }
-  
-  .button:disabled {
-    background-color: #9ca3af;
-    cursor: default;
-    pointer-events: none;
-  }
-  
+}
 
-  .button {
-    font-size: 2rem;
-    font-weight: 700;
-    border-radius: 99.9rem;
-    padding: 1.6rem 12.4rem;
+@media (max-width: 500px) {
+  .feature {
+    flex-direction: column;
+    align-items: center; /* align image and content block so they share the same left edge */
+    gap: 2rem;
   }
-  
+
+  .feature img {
+    order: 1;
+    width: 80vw; /* 80% of screen width on tablet */
+  }
+
+  .featureRight {
+    order: 2;
+    width: 80vw; /* match image width so content aligns with left side of image */
+    align-self: stretch; /* full width of the 80vw row */
+  }
+
+  .featureContent {
+    max-width: 80vw;
+  }
+
+  /* Feature 1 (Hot item): content next line, align left */
+  .feature:nth-child(1) .featureRight {
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: 3rem;
+  }
+
+  /* Feature 2 (Search): content next line, align right */
+  .feature:nth-child(2) .featureRight {
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-left: 5rem;
+  }
+
+  .feature:nth-child(2) .featureContent {
+    text-align: right;
+  }
+
+  /* Feature 3 (Register): content next line, align left */
+  .feature:nth-child(3) .featureRight {
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: 3rem;
+  }
+}
+
+
+
+/* Orange area: full side of the row, fills parent height */
+.featureRight {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fcfcfc;
+  min-height: 0; /* allow flex child to shrink if needed */
+  padding: 0 10px !important;
+}
+
+.featureContent {
+  max-width: 20rem;
+  width: fit-content;
+}
+
+.featureContent h1 {
+  font-size: 2rem;   /* half of global 4rem */
+  line-height: 2.8rem;
+}
+
+.featureTag {
+  color: #3692ff;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+}
+
+.featureDescription {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-top: 1.2rem;
+}
